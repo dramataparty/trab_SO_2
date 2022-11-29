@@ -1,7 +1,7 @@
-### Grupo: SO-TI-XX
-### Aluno 1: Nome Apelido (fcXXXX)
-### Aluno 2: Nome Apelido (fcXXXX)
-### Aluno 3: Nome Apelido (fcXXXX)
+### Grupo: SO-TI-05
+### Aluno 1: Diogo Forte (fc56931)
+### Aluno 2: Tiago (fcXXXX)
+
 
 import sys
 

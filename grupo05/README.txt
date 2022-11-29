@@ -1,7 +1,6 @@
-### Grupo: SO-TI-XX
-# Aluno 1: Nome Apelido (fcXXXXX)
-# Aluno 2: Nome Apelido (fcXXXXX)
-# Aluno 3: Nome Apelido (fcXXXXX)
+### Grupo: SO-TI-05
+### Aluno 1: Diogo Forte (fc56931)
+### Aluno 2: Tiago (fcXXXX)
 
 ### Exemplos de comandos para executar o pgrepwc:
 1) ./pgrepwc ...
