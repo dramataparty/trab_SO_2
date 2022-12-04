@@ -2,7 +2,7 @@
 ### Aluno 1: Diogo Forte (fc56931)
 ### Aluno 2: Tiago Ramalho (fc58645)
 
-
+import multiprocessing
 import sys
 import os
  # Mudanças a fazer :
@@ -51,19 +51,15 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
         ls = []                                   
         for _ in range(Rpn):                       
             ls = ls + [[]]                         
-        nxt = 0                                     
+        nxt = 0                                    
         for f in Rfiles:                           
             ls[nxt] = ls[nxt] + [f]
             nxt = (nxt + 1) % Rpn
         for t in range(Rpn):
-            newps = os.fork()                 
-            if newps == 0:
-                ler(Rword,ls[t],Rc,Rl)
-            else:
-                os.wait()
-                    
-            for _ in range(Rpn):                                                        
-                os.execl()
+            newP = multiprocessing.Process(target = ler,args =(Rword,ls[t],Rc,Rl,))                  
+            newP.start()
+        for _ in range(Rpn):                                                        
+            newP.join()
                 
     for i2 in range(len(Rfiles)-1):
         i3 = i2 + 1
