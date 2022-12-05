@@ -7,6 +7,8 @@ import sys
 import os
  # Mudanças a fazer :
  # remover a opçao "-t"
+ #remover tudo pertinente a forks e meter multiprocessing.process
+ #tentar não morrer
  #mudar a opçao "-e " para realizar o seguinte
  # -e k: opção que permite ativar o modo de paralelização especial, que agora funciona com múltiplos ficheiros. O parâmetro k
 #define o número máximo de bytes que compõem um bloco de trabalho
