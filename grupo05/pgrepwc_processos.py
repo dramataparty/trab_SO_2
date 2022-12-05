@@ -7,6 +7,7 @@ import sys
 import os
  # Mudanças a fazer :
  # remover a opçao "-t"
+ 
  #remover tudo pertinente a forks e meter multiprocessing.process
  #tentar não morrer
  #mudar a opçao "-e " para realizar o seguinte
@@ -16,6 +17,7 @@ import os
 #Garantir q os contadores funcionam corretamente
 #Usar multiprocessing-process
 #Ver guião mem. partilhada e seguintes
+
 def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
     linhas = []
     if Rc == True:
