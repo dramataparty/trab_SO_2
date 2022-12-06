@@ -5,9 +5,10 @@
 import multiprocessing
 import sys
 import os
+import argparse
  # Mudanças a fazer :
  # remover a opçao "-t"
- 
+ #ARGPARSE
  #remover tudo pertinente a forks e meter multiprocessing.process
  #tentar não morrer
  #mudar a opçao "-e " para realizar o seguinte
@@ -17,6 +18,8 @@ import os
 #Garantir q os contadores funcionam corretamente
 #Usar multiprocessing-process
 #Ver guião mem. partilhada e seguintes
+
+#só o processo pai é que é necessário fazer print
 
 def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
     linhas = []
@@ -51,8 +54,8 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
                         ocorrencias = ocorrencias + [n]
                     if Ll == True:
                         nlinhas = nlinhas + [nline]
-                    
-   
+  #------------------------------------------------------------------------------------------                      
+                     
     if Rpn == 1:                                   
             ler(Rword,Rfiles,Rc,Rl)
     else:
@@ -81,27 +84,38 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
 
 
 if __name__ == "__main__":
-    tudo = list(sys.argv)
-    c = False
-    l = False
-    pn = 1
-    e = False
-    pal = ""
-    if "-c" in tudo:                                            
-        c = True                                                
-    if "-l" in tudo:                                            
-        l = True                                                
-    if "-p" in tudo:                                            
-        for i in tudo:                                          
-            if i == "-p":                                       
-                pn = int(tudo[i+1])
-    if "-e" in tudo:
-        e = True
-    ficheiros = []
-    for x in tudo:                                              
-        if ".txt" in x:
-            ficheiros = ficheiros + x  
-        for x1 in range(len(tudo)):
-            if ".txt" in tudo[x1]:
-                pal = tudo[x1-1]
-    main(pal,ficheiros,c,l,pn,e)
+    parser = argparse.ArgumentParser(prog = 'FileReader')           
+    parser.add_argument('-c', '--count',type=int,nargs="?")      
+    parser.add_argument('-l', '--linenumber',type=int,nargs="?")
+    parser.add_argument('-p', '--paralevel',type=int,nargs="?",default=1)
+    parser.add_argument('-e', '--specialmode',type=int,nargs='?')
+    parser.add_argument('-palavra', '--palavra_a_pesquisar',type=str)
+    parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',type=open,nargs= '+')   
+    args = parser.parse_args()
+    
+    
+    
+    #tudo = list(sys.argv)
+    #c = False
+    #l = False
+    #pn = 1
+    #e = False
+    #pal = ""
+    #if "-c" in tudo:                                            
+    #    c = True                                                
+    #if "-l" in tudo:                                            
+    #    l = True                                                
+    #if "-p" in tudo:                                            
+    #    for i in tudo:                                          
+    #        if i == "-p":                                       
+    #            pn = int(tudo[i+1])
+    #if "-e" in tudo:
+    #    e = True
+    #ficheiros = []
+    #for x in tudo:                                              
+    #    if ".txt" in x:
+    #        ficheiros = ficheiros + x  
+    #    for x1 in range(len(tudo)):
+    #        if ".txt" in tudo[x1]:
+    #            pal = tudo[x1-1]
+    main(args.palavra_a_pesquisar,args.ficheiros_onde_pesquisar,args.count,args.linenumber,args.paralevel ,args.specialmode)
