@@ -72,6 +72,8 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
         for _ in range(Rpn):                                                        
             newP.join()
                 
+    #armazenar as reads numa variavel e fazer print delas
+    #medir tamanho do ficheiro atraves do tamanho de cada caractere
     for i2 in range(len(Rfiles)-1):
         i3 = i2 + 1
         print("o ficheiro nº " + str(i3) + " contem as seguintes linhas:")                                      
@@ -90,7 +92,7 @@ if __name__ == "__main__":
     parser.add_argument('-p', '--paralevel',type=int,nargs="?",default=1)
     parser.add_argument('-e', '--specialmode',type=int,nargs='?')
     parser.add_argument('-palavra', '--palavra_a_pesquisar',type=str)
-    parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',type=open,nargs= '+')   
+    parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',nargs= '+')   
     args = parser.parse_args()
     
     
