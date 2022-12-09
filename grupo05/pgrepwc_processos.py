@@ -113,7 +113,7 @@ if __name__ == "__main__":
     c = False
     l = False
     pn = 1
-    e = False
+    e = [False,0]
     bytenum = 0
     pal = ""
     if "-c" in tudo:                                            
@@ -126,9 +126,9 @@ if __name__ == "__main__":
                 pn = int(tudo[i+1])
     if "-e" in tudo:
         e = True
-        if e == True:
+        if e[0] == True:
             e = 1
-            #what do i put here        
+                   
     ficheiros = []
     for x in tudo:                                              
         if ".txt" in x:
