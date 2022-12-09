@@ -135,4 +135,4 @@ if __name__ == "__main__":
         for x1 in range(len(tudo)):
             if ".txt" in tudo[x1]:
                 pal = tudo[x1-1]
-    main(args.palavra_a_pesquisar,args.ficheiros_onde_pesquisar,args.count,args.linenumber,args.paralevel ,args.specialmode)
+    main(pal,ficheiros,c,l,pn,e)
