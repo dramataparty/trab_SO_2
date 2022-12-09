@@ -74,6 +74,9 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
                 
     #armazenar as reads numa variavel e fazer print delas
     #medir tamanho do ficheiro atraves do tamanho de cada caractere
+    reads = []
+    #assume que o size é em bytes
+    filesize = 0
     for i2 in range(len(Rfiles)-1):
         i3 = i2 + 1
         print("o ficheiro nº " + str(i3) + " contem as seguintes linhas:")                                      
@@ -83,6 +86,10 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
         if Rl == True:                                                                                     
             print("o numero total de linhas com esta palavra neste ficheiro foram " + str(nlinhas[i2]))
 
+    for i in range(len(reads)):
+        for e in range(len(reads[i])):
+            filesize += 2
+            
 
 
 if __name__ == "__main__":
@@ -94,9 +101,6 @@ if __name__ == "__main__":
     parser.add_argument('-palavra', '--palavra_a_pesquisar',type=str)
     parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',nargs= '*',default=[])   
     args = parser.parse_args()
-    
-    
-    
     main(args.palavra_a_pesquisar,args.ficheiros_onde_pesquisar,args.count,args.linenumber,args.paralevel ,args.specialmode)
     
     
