@@ -93,40 +93,46 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(prog = 'FileReader')           
-    parser.add_argument('-c', '--count',type=int,nargs="?")      
-    parser.add_argument('-l', '--linenumber',type=int,nargs="?")
-    parser.add_argument('-p', '--paralevel',type=int,nargs="?",default=1)
-    parser.add_argument('-e', '--specialmode',type=int,nargs='?')
-    parser.add_argument('-palavra', '--palavra_a_pesquisar',type=str)
-    parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',nargs= '*',default=[])   
-    args = parser.parse_args()
+    
+    
+    #parser = argparse.ArgumentParser(prog = 'FileReader')           
+    #parser.add_argument('-c', '--count',type=int,nargs="?")      
+    #parser.add_argument('-l', '--linenumber',type=int,nargs="?")
+    #parser.add_argument('-p', '--paralevel',type=int,nargs="?",default=1)
+    #parser.add_argument('-e', '--specialmode',type=int,nargs='?')
+    #parser.add_argument('-palavra', '--palavra_a_pesquisar',type=str)
+    #parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',nargs= '*',default=[])   
+    #args = parser.parse_args()
+    
+    
+    
+    
+    
+    tudo = list(sys.argv)
+    c = False
+    l = False
+    pn = 1
+    e = False
+    bytenum = 0
+    pal = ""
+    if "-c" in tudo:                                            
+        c = True                                                
+    if "-l" in tudo:                                            
+        l = True                                                
+    if "-p" in tudo:                                            
+        for i in tudo:                                          
+            if i == "-p":                                       
+                pn = int(tudo[i+1])
+    if "-e" in tudo:
+        e = True
+        if e == True:
+            e = 1
+            #what do i put here        
+    ficheiros = []
+    for x in tudo:                                              
+        if ".txt" in x:
+            ficheiros = ficheiros + x  
+        for x1 in range(len(tudo)):
+            if ".txt" in tudo[x1]:
+                pal = tudo[x1-1]
     main(args.palavra_a_pesquisar,args.ficheiros_onde_pesquisar,args.count,args.linenumber,args.paralevel ,args.specialmode)
-    
-    
-    
-    
-    #tudo = list(sys.argv)
-    #c = False
-    #l = False
-    #pn = 1
-    #e = False
-    #pal = ""
-    #if "-c" in tudo:                                            
-    #    c = True                                                
-    #if "-l" in tudo:                                            
-    #    l = True                                                
-    #if "-p" in tudo:                                            
-    #    for i in tudo:                                          
-    #        if i == "-p":                                       
-    #            pn = int(tudo[i+1])
-    #if "-e" in tudo:
-    #    e = True
-    #ficheiros = []
-    #for x in tudo:                                              
-    #    if ".txt" in x:
-    #        ficheiros = ficheiros + x  
-    #    for x1 in range(len(tudo)):
-    #        if ".txt" in tudo[x1]:
-    #            pal = tudo[x1-1]
-    
