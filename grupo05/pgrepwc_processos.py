@@ -29,6 +29,7 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
         nlinhas = []
     print('Programa: pgrepwc_processos.py')
     print('Argumentos: ',Rword,Rfiles,Rc,Rl,Rpn,Re)
+    nread(Rword,Rfiles,Rc,Rl,Rpn,Re)
 
 #------------------------------------------------------------------------------------------
 
@@ -55,40 +56,40 @@ def main(Rword,Rfiles,Rc,Rl,Rpn,Re):
                     if Ll == True:
                         nlinhas = nlinhas + [nline]
   #------------------------------------------------------------------------------------------                      
-                     
-    if Rpn == 1:                                   
-            ler(Rword,Rfiles,Rc,Rl)
-    else:
-        ls = []                                   
-        for _ in range(Rpn):                       
-            ls = ls + [[]]                         
-        nxt = 0                                    
-        for f in Rfiles:                           
-            ls[nxt] = ls[nxt] + [f]
-            nxt = (nxt + 1) % Rpn
-        for t in range(Rpn):
-            newP = multiprocessing.Process(target = ler,args =(Rword,ls[t],Rc,Rl,))                  
-            newP.start()
-        for _ in range(Rpn):                                                        
-            newP.join()
-                
-    #armazenar as reads numa variavel e fazer print delas
-    #medir tamanho do ficheiro atraves do tamanho de cada caractere
-    reads = []
-    #assume que o size é em bytes
-    filesize = 0
-    for i2 in range(len(Rfiles)-1):
-        i3 = i2 + 1
-        print("o ficheiro nº " + str(i3) + " contem as seguintes linhas:")                                      
-        print(linhas[i2])                                                                                    
-        if Rc == True:                                                                                     
-            print("o numero total de ocorrencias da palavra neste ficheiro foram " + str(ocorrencias[i2]))      
-        if Rl == True:                                                                                     
-            print("o numero total de linhas com esta palavra neste ficheiro foram " + str(nlinhas[i2]))
+    def nread(Rword,Rfiles,Rc,Rl,Rpn,Re):                
+        if Rpn == 1:                                   
+                ler(Rword,Rfiles,Rc,Rl)
+        else:
+            ls = []                                   
+            for _ in range(Rpn):                       
+                ls = ls + [[]]                         
+            nxt = 0                                    
+            for f in Rfiles:                           
+                ls[nxt] = ls[nxt] + [f]
+                nxt = (nxt + 1) % Rpn
+            for t in range(Rpn):
+                newP = multiprocessing.Process(target = ler,args =(Rword,ls[t],Rc,Rl,))                  
+                newP.start()
+            for _ in range(Rpn):                                                        
+                newP.join()
+                    
+        #armazenar as reads numa variavel e fazer print delas
+        #medir tamanho do ficheiro atraves do tamanho de cada caractere
+        reads = []
+        #assume que o size é em bytes
+        filesize = 0
+        for i2 in range(len(Rfiles)-1):
+            i3 = i2 + 1
+            print("o ficheiro nº " + str(i3) + " contem as seguintes linhas:")                                      
+            print(linhas[i2])                                                                                    
+            if Rc == True:                                                                                     
+                print("o numero total de ocorrencias da palavra neste ficheiro foram " + str(ocorrencias[i2]))      
+            if Rl == True:                                                                                     
+                print("o numero total de linhas com esta palavra neste ficheiro foram " + str(nlinhas[i2]))
 
-    for i in range(len(reads)):
-        for e in range(len(reads[i])):
-            filesize += 2
+        for i in range(len(reads)):
+            for e in range(len(reads[i])):
+                filesize += 2
             
 
 
