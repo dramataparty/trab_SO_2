@@ -92,8 +92,13 @@ if __name__ == "__main__":
     parser.add_argument('-p', '--paralevel',type=int,nargs="?",default=1)
     parser.add_argument('-e', '--specialmode',type=int,nargs='?')
     parser.add_argument('-palavra', '--palavra_a_pesquisar',type=str)
-    parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',nargs= '+')   
+    parser.add_argument('-ficheiros', '--ficheiros_onde_pesquisar',nargs= '*',default=[])   
     args = parser.parse_args()
+    
+    
+    
+    main(args.palavra_a_pesquisar,args.ficheiros_onde_pesquisar,args.count,args.linenumber,args.paralevel ,args.specialmode)
+    
     
     
     
@@ -120,4 +125,4 @@ if __name__ == "__main__":
     #    for x1 in range(len(tudo)):
     #        if ".txt" in tudo[x1]:
     #            pal = tudo[x1-1]
-    main(args.palavra_a_pesquisar,args.ficheiros_onde_pesquisar,args.count,args.linenumber,args.paralevel ,args.specialmode)
+    
